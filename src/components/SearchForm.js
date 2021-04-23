@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { Card, Form, Button, Dropdown, ButtonGroup } from 'react-bootstrap'
+import { Card, Form } from 'react-bootstrap'
+import { getRandomChar } from '../utilities'
 import InputOptions from './InputOptions'
 import DropdownMenu from './DropdownMenu'
 
-export default function SearchForm() {
+export default function SearchForm({setData}) {
   const initalState = {searchState: 'random'}
   const [options, setOptions] = useState(initalState)
 
@@ -14,8 +15,9 @@ export default function SearchForm() {
   }
 
   const handleSubmit = (e) => {
+    let { searchState } = options
     e.preventDefault()
-    setOptions(initalState)
+    if (searchState === 'random') getRandomChar(setData)
   }
 
   return (
@@ -23,7 +25,7 @@ export default function SearchForm() {
         <Card.Title>Breaking Bad Search</Card.Title>
         <Form onSubmit={handleSubmit}>
           {options.searchState === 'random' ? '' : <InputOptions name={parsedName()} setState={setOptions}/>}
-          <DropdownMenu name={parsedName()} setState={setOptions} />
+          <DropdownMenu name={parsedName()} setState={setOptions} handleSubmit={handleSubmit}/>
         </Form>
       </>
   )
