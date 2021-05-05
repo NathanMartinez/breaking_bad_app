@@ -1,8 +1,8 @@
 import {Dropdown, Button, ButtonGroup} from 'react-bootstrap'
 
-export default function DropdownMenu({name, setState, handleSubmit}) {
+export default function DropdownMenu({ name, handleSubmit, state: { values:{searchOptions}, setValues: {setSearchOptions} }}) {
   const handleSelect = (eventKey) => {
-    setState(prev => ({...prev, searchState: eventKey}))
+    setSearchOptions(eventKey)
   }
   
   return (

@@ -1,16 +1,14 @@
-import { Card, Button } from 'react-bootstrap'
-import OccupationList from './OccupationList'
+import { Card } from 'react-bootstrap'
 
 export default function CharacterCard({character}) {
-  let {img, name, birthday, status, nickname, occupation} = character
+  let {img, name, nickname} = character
   return (
-  <Card style={{ width: '18rem' }} bg='dark' text='light'>
-    <Card.Img variant="top" src={img} />
+  <Card style={{width: '20rem'}} bg='dark' text='light'>
+    <Card.Img variant="top" src={img} style={{height: '25rem'}}/>
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Title>{nickname}</Card.Title>
-            <OccupationList occupations={occupation} />
-    </Card.Body>
+      </Card.Body>
   </Card>
   )
 }

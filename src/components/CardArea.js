@@ -1,13 +1,22 @@
-import { Card, CardDeck } from 'react-bootstrap'
+import { Card, Container } from 'react-bootstrap'
 import CharacterCard from './CharacterCard'
 
 export default function CardArea({data}) {
-  if (!data.char_id) return <></>
-  let result = data.map(character => <CharacterCard character={character} key={character.char_id}/>)
+  let result
+  if (data) {
+    result = data.map(character => <CharacterCard character={character} key={character.char_id}/>)
+  }
+  let singleCardStyle = { 
+    display: 'flex', 
+    justifyContent: 'center', 
+    alignItems: 'center'
+  }
   return (
     <Card>
       <Card.Body>
-        <CardDeck>{result}</CardDeck>
+        <Container style={singleCardStyle}>
+            {result}
+        </Container>
       </Card.Body>
     </Card>
   )
