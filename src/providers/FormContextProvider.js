@@ -7,6 +7,9 @@ export default function FormContextProvider({ children }) {
   const [searchText, setSearchText] = useState('')
   const [searchOption, setSearchOption] = useState('random')
   const [labelName, setLabelName] = useState('Random')
+  const [isRandom, setIsRandom] = useState(true)
+
+  const maxLimit = 10
 
   const globalState = {
     searchText, 
@@ -16,7 +19,10 @@ export default function FormContextProvider({ children }) {
     searchOption, 
     setSearchOption,
     labelName,
-    setLabelName
+    setLabelName,
+    maxLimit,
+    isRandom,
+    setIsRandom
   }
   
   return (
