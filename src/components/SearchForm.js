@@ -1,28 +1,21 @@
+import { useContext } from 'react'
 import { Card, Form } from 'react-bootstrap'
-import { getRandomChar } from '../utilities'
 import InputOptions from './InputOptions'
-import DropdownMenu from './DropdownMenu'
+import DropdownButton from './DropdownButton'
+import { FormContext } from '../providers/FormContextProvider'
 
-export default function SearchForm({state}) {
-  const { values: {searchOptions}, setValues: { setData, setLoading } } = state
+export default function SearchForm() {
+  const { globalState: { limit } } = useContext(FormContext)
 
-  const parsedName = () => {
-    if (searchOptions === 'id') return searchOptions.toUpperCase()
-    return searchOptions[0].toUpperCase() + searchOptions.slice(1)
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (searchOptions === 'random') getRandomChar(setData, setLoading)
-  }
+  console.log(limit);
 
   return (
-      <>
-        <Card.Title>Breaking Bad Search</Card.Title>
-        <Form onSubmit={handleSubmit}>
-          <InputOptions name={parsedName()} state={state} />
-          <DropdownMenu name={parsedName()} state={state} />
-        </Form>
-      </>
+    <Card.Body>
+      <Card.Title>Breaking Bad Search</Card.Title>
+      <Form>
+        <InputOptions  />
+        <DropdownButton  />
+      </Form>
+    </Card.Body>
   )
 }

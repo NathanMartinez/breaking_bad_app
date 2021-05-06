@@ -1,9 +1,13 @@
 import { Form } from 'react-bootstrap'
 
-export default function SearchInput({name, handleChange}) {
+export default function SearchInput() {
+  const handleChange = (e) => {
+    const {name, value} = e.target
+  }
+
   return (
     <>
-      <Form.Label>{name}</Form.Label>
+      <Form.Label>{}</Form.Label>
       <Form.Control type='text' onChange={handleChange} />
     </>
   )
