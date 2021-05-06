@@ -1,13 +1,13 @@
 import {Dropdown, Button, ButtonGroup} from 'react-bootstrap'
 
-export default function DropdownMenu({name, setState}) {
+export default function DropdownMenu({ name, handleSubmit, state: { values:{searchOptions}, setValues: {setSearchOptions} }}) {
   const handleSelect = (eventKey) => {
-    setState(prev => ({...prev, searchState: eventKey}))
+    setSearchOptions(eventKey)
   }
   
   return (
-    <Dropdown as={ButtonGroup} onSelect={handleSelect}>
-      <Button>{name} Search</Button>
+    <Dropdown as={ButtonGroup} onSelect={handleSelect} >
+      <Button onClick={handleSubmit}>{name} Search</Button>
       <Dropdown.Toggle split id="dropdown-split-basic" />
       <Dropdown.Menu>
         <Dropdown.Item eventKey="id">ID Search</Dropdown.Item>

@@ -2,7 +2,7 @@ import { Nav } from 'react-bootstrap'
 
 export default function NavTabs() {
   return (
-    <Nav variant="tabs" defaultActiveKey="#characters">
+  <Nav variant="tabs" defaultActiveKey="#characters">
     <Nav.Item>
       <Nav.Link href="#characters">Characters</Nav.Link>
     </Nav.Item>
