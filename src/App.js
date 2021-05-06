@@ -1,32 +1,14 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 import { Container, Card } from 'react-bootstrap'
 import NavTabs from './components/NavTabs'
 import SearchForm from './components/SearchForm'
 import CardArea from './components/CardArea'
+import { FormContext } from './providers/FormContextProvider'
 
 function App() {
-  const [searchText, setSearchText] = useState('')
-  const [limit, setLimit] = useState(1)
-  const [searchOptions, setSearchOptions] = useState('random')
-  const [data, setData] = useState([])
-  const [loading, setLoading] = useState(false)
+  const { globalContext: { limit } } = useContext(FormContext)
 
-  const state = {
-    values: {
-    searchText,
-    limit, 
-    data, 
-    loading,
-    searchOptions
-    },
-    setValues: {
-      setSearchText,
-      setLimit,
-      setData,
-      setLoading,
-      setSearchOptions
-    }
-  }
+  
 
   return (
     <Container className="App">
@@ -35,7 +17,7 @@ function App() {
           <NavTabs />
         </Card.Header>
         <Card.Body>
-          <SearchForm state={state}/>
+          <SearchForm />
         </Card.Body>
       </Card>
      {state.values.data.length > 1 ? <CardArea state={state}/> : ''}
