@@ -1,8 +1,15 @@
+// React Bootstrap
 import { Container, Card } from 'react-bootstrap'
+
+// Components
 import NavTabs from './components/NavTabs'
 import CardArea from './components/CardArea'
 import SearchForm from './components/SearchForm'
+
+// Context
 import FormContextProvider from './providers/FormContextProvider'
+
+// React Query
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 

@@ -7,7 +7,10 @@ import { getRandomCharacters } from '../queries/characters'
 export default function DropdownButton() {
   const { globalState: { labelName, setSearchOption, setLabelName, setIsRandom, limit } } = useContext(FormContext)
 
-  // const { status, data } = useQuery("characters", getRandomCharacters);
+  const { status, data, refetch } = useQuery("characters", () => getRandomCharacters(limit), {
+    refetchOnWindowFocus: false,
+    enabled: false // Sets it up so the data does not auto fetch on load
+  });
 
   // if (status === "loading") return <p>Loading...</p>;
   // if (status === "error") return <p>Error :(</p>;
@@ -23,12 +26,12 @@ export default function DropdownButton() {
   }
 
   const handleSubmit = (e) => {
-    
+    refetch()
   }
   
   return (
     <Dropdown as={ButtonGroup} onSelect={handleSelect} >
-      <Button onClick={handleSubmit} >{labelName} Search</Button>
+      <Button onClick={handleSubmit}>{labelName} Search</Button>
       <Dropdown.Toggle split id="dropdown-split-basic" />
       <Dropdown.Menu>
         <Dropdown.Item eventKey="id" >ID Search</Dropdown.Item>
