@@ -2,9 +2,9 @@
 import { Container, Card } from 'react-bootstrap'
 
 // Components
-import NavTabs from './components/NavTabs'
-import CardArea from './components/CardArea'
-import SearchForm from './components/SearchForm'
+import NavTabs from './components/navigation/NavTabs'
+import CardArea from './components/content-components/CardArea'
+import SearchForm from './components/form-components/SearchForm'
 
 // Context
 import FormContextProvider from './providers/FormContextProvider'

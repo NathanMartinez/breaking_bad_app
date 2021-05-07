@@ -1,8 +1,8 @@
 import { Card, Form } from 'react-bootstrap'
 import { useContext } from 'react'
-import { FormContext } from '../providers/FormContextProvider'
+import { FormContext } from '../../providers/FormContextProvider'
 import SearchInput from './SearchInput'
-import InputOptions from './InputOptions'
+import InputOptions from '../InputOptions'
 import DropdownButton from './DropdownButton'
 
 export default function SearchForm() {
