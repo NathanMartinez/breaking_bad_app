@@ -1,6 +1,6 @@
 import { Form } from 'react-bootstrap'
 import { useContext } from 'react'
-import { FormContext } from '../providers/FormContextProvider'
+import { FormContext } from '../../providers/FormContextProvider'
 
 export default function SearchInput() {
   const { 

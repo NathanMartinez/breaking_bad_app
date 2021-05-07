@@ -1,6 +1,6 @@
 import { Form, Dropdown, DropdownButton, ButtonGroup } from 'react-bootstrap'
 import { useContext } from 'react'
-import { FormContext } from '../providers/FormContextProvider'
+import { FormContext } from '../../providers/FormContextProvider'
 
 export default function InputOptions() {
   const { globalState: { limit, setLimit, labelName } } = useContext(FormContext)
