@@ -1,34 +1,28 @@
+// React
+import { useContext } from 'react'
+
 // React Bootstrap
 import { Container, Card } from 'react-bootstrap'
 
 // Components
 import NavTabs from './components/navigation/NavTabs'
-import CardArea from './components/content-components/CardArea'
 import SearchForm from './components/form-components/SearchForm'
+import Characters from './components/characters/Characters'
 
 // Context
-import FormContextProvider from './providers/FormContextProvider'
-
-// React Query
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
-
-const queryClient = new QueryClient();
+import { FormContext } from './providers/FormContextProvider'
 
 function App() {
+  const { globalState: { page } } = useContext(FormContext)
+
   return (
-    <QueryClientProvider client={queryClient}>
-      <Container className="App">
-        <FormContextProvider>
+      <Container className="app" style={{background: '#353A40', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
           <Card>
             <NavTabs />
             <SearchForm />
           </Card>
-            <CardArea />
-        </FormContextProvider>
+        { page === 'characters' && <Characters /> }
       </Container>
-      <ReactQueryDevtools initialIsOpen />
-    </QueryClientProvider>
   );
 }
 

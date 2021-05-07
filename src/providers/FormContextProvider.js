@@ -3,11 +3,12 @@ import React, { useState } from 'react'
 export const FormContext = React.createContext()
 
 export default function FormContextProvider({ children }) {
-  const [limit, setLimit] = useState(3)
+  const [limit, setLimit] = useState(1)
   const [searchText, setSearchText] = useState('')
   const [searchOption, setSearchOption] = useState('random')
   const [labelName, setLabelName] = useState('Random')
   const [isRandom, setIsRandom] = useState(true)
+  const [page, setPage] = useState('characters')
 
   const maxLimit = 10
 
@@ -22,7 +23,9 @@ export default function FormContextProvider({ children }) {
     setLabelName,
     maxLimit,
     isRandom,
-    setIsRandom
+    setIsRandom,
+    page,
+    setPage
   }
   
   return (
