@@ -25,9 +25,9 @@ function App() {
             <SearchForm />
           </Card>
           { page === 'episodes' && <Episodes /> }
-        { page === 'characters' && <Characters /> }
-        { page === 'quotes' && <Quotes /> }
-        { page === 'deaths' && <Deaths /> }
+          { page === 'characters' && <Characters /> }
+          { page === 'quotes' && <Quotes /> }
+          { page === 'deaths' && <Deaths /> }
       </>
   );
 }

@@ -4,7 +4,16 @@ import styled from 'styled-components'
 export default function Episode({ _episode }) {
   const { episode_id, title, episode, characters, season, air_date } = _episode
 
-  const characterList = characters.map(((character, i) => <ListItem key={i}>{ character }</ListItem>))
+  const characterList = characters.map(((character, i) => (
+  <Card key={i} style={{width: '10rem'}}>
+    <Card.Body>
+      { character }
+    </Card.Body>
+  </Card>
+  
+  )
+  
+  ))
 
   return (
     <Card>
@@ -16,27 +25,24 @@ export default function Episode({ _episode }) {
       <small><b>Season: { season } | Episode: { episode }</b></small>
     </Header>
     <Accordion.Collapse eventKey={ episode_id }>
-      <Body> 
-        Characters: 
-        { characterList }
-        <small>Air Date: { air_date }</small>
-      </Body>
+      <Card.Body> 
+      Characters: 
+      <CharacterArea>
+      { characterList }
+      </CharacterArea>
+        {/* <small>Air Date: { air_date }</small> */}
+      </Card.Body>
     </Accordion.Collapse>
   </Card>
   )
 }
-const ListItem = styled.li`
-  margin-left: 1rem;
-  list-style-type: "- ";
-`
+
 const Header = styled(Card.Header)`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `
-const Body = styled(Card.Body)`
-small {
-  display: block;
-  margin: 1.5rem 0 0 1rem;
-}
+const CharacterArea = styled(Card.Body)`
+display: grid;
+grid-template-columns: repeat(auto, 10rem);
 `
