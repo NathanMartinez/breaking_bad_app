@@ -27,6 +27,7 @@ export default function Deaths() {
 }
 const Deathsection = styled(Card.Body)`
 display: grid;
-grid-template-rows: auto;
-gap: 1rem
+grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+grid-auto-rows: minmax(3rem, auto);
+gap: 1.5rem;
 `

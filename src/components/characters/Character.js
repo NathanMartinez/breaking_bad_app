@@ -19,6 +19,7 @@ export default function Character({character}) {
 }
 
 const CharacterCard = styled(Card)`
+box-shadow: 0 0 8px 1px rgba(0,0,0,0.1);
 &:hover {
   cursor: pointer;
   box-shadow: 0 0 10px 1px gray;
