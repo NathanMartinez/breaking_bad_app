@@ -10,7 +10,7 @@ const getCharacters = async () => {
 }
 
 export default function Characters() {
-  const { data, status } = useQuery('random_characters', getCharacters) 
+  const { data, status } = useQuery('characters', getCharacters) 
   
   if (status === 'error') return <h1>Error :(</h1>
   if (status === 'loading') return <Loading />

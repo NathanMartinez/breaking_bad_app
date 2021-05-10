@@ -12,6 +12,7 @@ import Episodes from './components/episodes/Episodes'
 
 // Context
 import { FormContext } from './providers/FormContextProvider'
+import Quotes from './components/quotes/Quotes'
 
 function App() {
   const { globalState: { page } } = useContext(FormContext)
@@ -24,6 +25,7 @@ function App() {
           </Card>
           { page === 'episodes' && <Episodes /> }
         { page === 'characters' && <Characters /> }
+        { page === 'quotes' && <Quotes /> }
       </>
   );
 }
