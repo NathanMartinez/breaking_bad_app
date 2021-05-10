@@ -27,10 +27,6 @@ export default function Characters() {
 }
 const CharacterContainer = styled(Card.Body)`
   display: grid;
-  @media (max-width: 400px) {
-    grid-template-columns: repeat(1, auto);
-  }
-
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  justify-content: center;
 `
