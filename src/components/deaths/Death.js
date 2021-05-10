@@ -9,12 +9,12 @@ export default function Death({_death}) {
         <b>{ death }</b> 
         <small><b>Season: { season } | Episode: { episode }</b></small>
       </Header>
-      <Card.Body>
+      <CardBody>
         <p><b>Cause of Death:</b> { cause }</p>
         <b>Last Words: </b>
-        <blockquote><i>{ last_words }</i></blockquote>
+        <blockquote><i>"{ last_words }"</i></blockquote>
         <p><b>Killed By:</b> { responsible }</p>
-      </Card.Body> 
+      </CardBody> 
     </DeathCard>
   )
 }
@@ -24,4 +24,9 @@ box-shadow: 0 0 8px 1px rgba(0,0,0,0.1);
 const Header = styled(Card.Header)`
   display: flex;
   justify-content: space-between;
+`
+const CardBody = styled(Card.Body)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 `

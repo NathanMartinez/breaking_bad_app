@@ -30,7 +30,7 @@ export default function Episode({ _episode }) {
       <CharacterArea>
       { characterList }
       </CharacterArea>
-        {/* <small>Air Date: { air_date }</small> */}
+        <small>Air Date: { air_date }</small>
       </Card.Body>
     </Accordion.Collapse>
   </Card>

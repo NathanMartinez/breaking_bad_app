@@ -27,7 +27,7 @@ export default function Quotes() {
 }
 const QuoteSection = styled(Card.Body)`
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
 grid-auto-rows: minmax(3rem, auto);
 gap: 1.5rem;
 `

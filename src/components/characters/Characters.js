@@ -27,6 +27,6 @@ export default function Characters() {
 }
 const CharacterContainer = styled(Card.Body)`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
   gap: 2rem;
 `
