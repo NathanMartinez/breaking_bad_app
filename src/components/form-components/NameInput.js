@@ -2,10 +2,9 @@ import { Form } from 'react-bootstrap'
 import { useContext } from 'react'
 import { FormContext } from '../../providers/FormContextProvider'
 
-export default function SearchInput() {
+export default function NameInput() {
   const { 
     globalState: { 
-      labelName, 
       searchText, 
       setSearchText 
     } 
@@ -17,9 +16,9 @@ export default function SearchInput() {
   }
 
   return (
-    <>
-      <Form.Label>{labelName}</Form.Label>
+    <Form.Group>
+      <Form.Label>Name: </Form.Label>
       <Form.Control type='text' onChange={handleChange} value={searchText} />
-    </>
+    </Form.Group>
   )
 }

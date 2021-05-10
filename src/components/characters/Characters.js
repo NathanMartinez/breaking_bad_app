@@ -1,30 +1,36 @@
-import React, { useContext } from 'react'
 import { Card } from 'react-bootstrap'
 import { useQuery } from 'react-query'
-import { FormContext } from '../../providers/FormContextProvider'
 import Character from './Character'
+import Loading from '../utilities/Loading'
+import styled from 'styled-components'
 
-const getCharacters = async ({queryKey}) => {
-  const [_key, limit] = queryKey
-   const res = await fetch(`https://www.breakingbadapi.com/api/character/random?limit=${limit}`)
+const getCharacters = async () => {
+   const res = await fetch(`https://www.breakingbadapi.com/api/characters`)
     return await res.json()
 }
 
 export default function Characters() {
-  const { globalState: { limit } } = useContext(FormContext)
-  
-  const { data, status } = useQuery(['random_characters', limit], getCharacters) 
+  const { data, status } = useQuery('random_characters', getCharacters) 
   
   if (status === 'error') return <h1>Error :(</h1>
-  if (status === 'loading') return <h1>Loading...</h1>
+  if (status === 'loading') return <Loading />
 
   const result = data.map((character, i) => <Character key={i} character={character}/>)
 
   return (
-      <Card style={{marginTop: '1rem'}}>
-        <Card.Body style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', padding: 0}}>
+      <Card>
+        <CharacterContainer>
           { result }
-        </Card.Body>
+        </CharacterContainer>
       </Card>
   )
 }
+const CharacterContainer = styled(Card.Body)`
+  display: grid;
+  @media (max-width: 400px) {
+    grid-template-columns: repeat(1, auto);
+  }
+
+  gap: 2rem;
+  justify-content: center;
+`
