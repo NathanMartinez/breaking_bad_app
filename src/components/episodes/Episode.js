@@ -5,11 +5,11 @@ export default function Episode({ _episode }) {
   const { episode_id, title, episode, characters, season, air_date } = _episode
 
   const characterList = characters.map(((character, i) => (
-  <Card key={i} bg='success' text='light'>
-    <CardBody>
+  <CharacterCard key={i}>
+    <Card.Body>
       <b><i>{ character }</i></b>
-    </CardBody>
-  </Card>
+    </Card.Body>
+  </CharacterCard>
   
   )
   
@@ -48,6 +48,6 @@ grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
 grid-auto-rows: minmax(3rem, auto);
 gap: .5rem;
 `
-const CardBody = styled(Card.Body)`
-  box-shadow: 0 0 4px 1px gray;
+const CharacterCard = styled(Card)`
+box-shadow: 0 0 8px 1px rgba(0,0,0,0.1);
 `
