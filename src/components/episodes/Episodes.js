@@ -5,9 +5,8 @@ import { FormContext } from '../../providers/FormContextProvider'
 import Episode from './Episode'
 import Loading from '../utilities/Loading'
 
-const getEpisodes = async ({queryKey}) => {
-  const [_key, limit] = queryKey
-   const res = await fetch(`https://www.breakingbadapi.com/api/episodes?limit=${limit}`)
+const getEpisodes = async () => {
+   const res = await fetch(`https://www.breakingbadapi.com/api/episodes`)
     return await res.json()
 }
 

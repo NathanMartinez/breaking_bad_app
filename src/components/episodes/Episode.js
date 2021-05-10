@@ -8,26 +8,35 @@ export default function Episode({ _episode }) {
 
   return (
     <Card>
-    <Card.Header>
+    <Header>
       <Accordion.Toggle as={ Button } variant="link" eventKey={ episode_id }>
         { title }
       </Accordion.Toggle>
-      <AirDate>Air Date: { air_date }</AirDate>
-      <SeasonInfo>Season: { season } | Episode: { episode }</SeasonInfo>
-    </Card.Header>
+      <br/>
+      <small><b>Season: { season } | Episode: { episode }</b></small>
+    </Header>
     <Accordion.Collapse eventKey={ episode_id }>
-      <Card.Body><b>Characters:</b> { characterList }</Card.Body>
+      <Body> 
+        Characters: 
+        { characterList }
+        <small>Air Date: { air_date }</small>
+      </Body>
     </Accordion.Collapse>
   </Card>
   )
 }
 const ListItem = styled.li`
   margin-left: 1rem;
+  list-style-type: "- ";
 `
-const AirDate = styled.small`
-  margin-left: 3rem;
+const Header = styled(Card.Header)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `
-const SeasonInfo = styled.small`
-  margin-left: 3rem;
-  font-weight: bold;
+const Body = styled(Card.Body)`
+small {
+  display: block;
+  margin: 1.5rem 0 0 1rem;
+}
 `
