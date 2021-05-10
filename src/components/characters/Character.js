@@ -8,20 +8,17 @@ export default function Character({character}) {
   <CharacterCard>
     <CharacterImg variant="top" src={img} fluid/>
     <Card.ImgOverlay className='text-white'>
-    {/* <Card.Title>{ status }</Card.Title> */}
-  </Card.ImgOverlay>
-      <CardBody>
-        <Card.Title>{ name }</Card.Title>
-        <Card.Text>{ nickname }</Card.Text>
-      </CardBody>
+      <Card.Text>{ status }</Card.Text>
+    </Card.ImgOverlay>
+    <CardBody>
+      <Card.Title>{ name }</Card.Title>
+      <Card.Text>{ nickname }</Card.Text>
+    </CardBody>
   </CharacterCard>
   )
 }
 
-const statusColor = 'lime'
-
 const CharacterCard = styled(Card)`
-width: 20rem;
 &:hover {
   cursor: pointer;
   box-shadow: 0 0 10px 1px gray;

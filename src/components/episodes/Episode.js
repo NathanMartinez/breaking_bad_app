@@ -4,30 +4,50 @@ import styled from 'styled-components'
 export default function Episode({ _episode }) {
   const { episode_id, title, episode, characters, season, air_date } = _episode
 
-  const characterList = characters.map(((character, i) => <ListItem key={i}>{ character }</ListItem>))
+  const characterList = characters.map(((character, i) => (
+  <Card key={i} bg='success' text='light'>
+    <CardBody>
+      <b><i>{ character }</i></b>
+    </CardBody>
+  </Card>
+  
+  )
+  
+  ))
 
   return (
     <Card>
-    <Card.Header>
+    <Header>
       <Accordion.Toggle as={ Button } variant="link" eventKey={ episode_id }>
         { title }
       </Accordion.Toggle>
-      <AirDate>Air Date: { air_date }</AirDate>
-      <SeasonInfo>Season: { season } | Episode: { episode }</SeasonInfo>
-    </Card.Header>
+      <br/>
+      <small><b>Season: { season } | Episode: { episode }</b></small>
+    </Header>
     <Accordion.Collapse eventKey={ episode_id }>
-      <Card.Body><b>Characters:</b> { characterList }</Card.Body>
+      <Card.Body> 
+      Characters: 
+      <CharacterArea>
+      { characterList }
+      </CharacterArea>
+        {/* <small>Air Date: { air_date }</small> */}
+      </Card.Body>
     </Accordion.Collapse>
   </Card>
   )
 }
-const ListItem = styled.li`
-  margin-left: 1rem;
+
+const Header = styled(Card.Header)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `
-const AirDate = styled.small`
-  margin-left: 3rem;
+const CharacterArea = styled(Card.Body)`
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+grid-auto-rows: minmax(3rem, auto);
+gap: .5rem;
 `
-const SeasonInfo = styled.small`
-  margin-left: 3rem;
-  font-weight: bold;
+const CardBody = styled(Card.Body)`
+  box-shadow: 0 0 4px 1px gray;
 `

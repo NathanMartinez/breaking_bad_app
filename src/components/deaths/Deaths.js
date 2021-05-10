@@ -1,31 +1,31 @@
 import { Card } from 'react-bootstrap'
 import { useQuery } from 'react-query'
 import Loading from '../utilities/Loading'
-import Quote from './Quote'
+import Death from './Death'
 import styled from 'styled-components'
 
-const getQuotes = async () => {
-   const res = await fetch(`https://www.breakingbadapi.com/api/quotes`)
+const getDeaths = async () => {
+   const res = await fetch(`https://www.breakingbadapi.com/api/deaths`)
     return await res.json()
 }
 
-export default function Quotes() {
-  const { data, status } = useQuery('quotes', getQuotes) 
+export default function Deaths() {
+  const { data, status } = useQuery('deaths', getDeaths) 
   
   if (status === 'error') return <h1>Error :(</h1>
   if (status === 'loading') return <Loading />
 
-  const result = data.map((_quote, i) => <Quote key={i} _quote={_quote}/>)
+  const result = data.map((death, i) => <Death key={i} _death={death}/>)
 
   return (
       <Card>
-        <QuoteSection>
+        <Deathsection>
           { result }
-        </QuoteSection>
+        </Deathsection>
       </Card>
   )
 }
-const QuoteSection = styled(Card.Body)`
+const Deathsection = styled(Card.Body)`
 display: grid;
 grid-template-rows: auto;
 gap: 1rem

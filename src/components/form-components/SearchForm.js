@@ -1,6 +1,5 @@
-import { Card, Form } from 'react-bootstrap'
+import { Button, Card, Form } from 'react-bootstrap'
 import NameInput from './NameInput'
-import DropdownButton from './DropdownButton'
 
 export default function SearchForm() {
 
@@ -9,7 +8,7 @@ export default function SearchForm() {
       <Card.Title>Breaking Bad Search</Card.Title>
       <Form>
         <NameInput />
-        <DropdownButton  />
+        <Button>Search</Button>
       </Form>
     </Card.Body>
   )

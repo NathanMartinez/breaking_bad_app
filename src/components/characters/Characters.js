@@ -10,7 +10,7 @@ const getCharacters = async () => {
 }
 
 export default function Characters() {
-  const { data, status } = useQuery('random_characters', getCharacters) 
+  const { data, status } = useQuery('characters', getCharacters) 
   
   if (status === 'error') return <h1>Error :(</h1>
   if (status === 'loading') return <Loading />
@@ -27,10 +27,6 @@ export default function Characters() {
 }
 const CharacterContainer = styled(Card.Body)`
   display: grid;
-  @media (max-width: 400px) {
-    grid-template-columns: repeat(1, auto);
-  }
-
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  justify-content: center;
 `

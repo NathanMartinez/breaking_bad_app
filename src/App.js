@@ -12,6 +12,8 @@ import Episodes from './components/episodes/Episodes'
 
 // Context
 import { FormContext } from './providers/FormContextProvider'
+import Quotes from './components/quotes/Quotes'
+import Deaths from './components/deaths/Deaths'
 
 function App() {
   const { globalState: { page } } = useContext(FormContext)
@@ -23,7 +25,9 @@ function App() {
             <SearchForm />
           </Card>
           { page === 'episodes' && <Episodes /> }
-        { page === 'characters' && <Characters /> }
+          { page === 'characters' && <Characters /> }
+          { page === 'quotes' && <Quotes /> }
+          { page === 'deaths' && <Deaths /> }
       </>
   );
 }
