@@ -13,7 +13,7 @@ export default function Death({_death}) {
         <p><b>Cause of Death: </b>{ cause }</p>
         <b>Last Words:</b>
         <blockquote>"{ last_words }"</blockquote>
-        <p><b>Killed By: </b>{ responsible }</p>
+        <p><b>Responsible: </b>{ responsible }</p>
       </Card.Body> 
     </DeathCard>
   )
@@ -29,7 +29,6 @@ const DeathCard = styled(Card)`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-weight: bold;
   }
   
   .card-body {

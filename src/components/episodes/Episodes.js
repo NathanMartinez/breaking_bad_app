@@ -1,8 +1,10 @@
-import { Accordion } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 import { useQuery } from 'react-query'
 
 import Episode from './Episode'
 import Loading from '../utilities/Loading'
+
+import styled from "styled-components";
 
 const getEpisodes = async () => {
    const res = await fetch(`https://www.breakingbadapi.com/api/episodes`)
@@ -18,8 +20,18 @@ export default function Episodes() {
   const result = data.map((episode, i) => <Episode key={ i } _episode={ episode }/>)
 
   return (
-      <Accordion>
-          { result }
-      </Accordion>
+    <EpisodeContainer>
+        <Card.Body>
+            { result }
+        </Card.Body>
+    </EpisodeContainer>
   )
 }
+const EpisodeContainer = styled(Card)`
+& > .card-body {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-auto-rows: minmax(10rem, auto);
+    gap: 1.5rem;
+  }
+  `

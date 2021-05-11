@@ -18,15 +18,17 @@ export default function Characters() {
   const result = data.map((character, i) => <Character key={ i } character={ character }/>)
 
   return (
-      <Card>
-        <CharacterContainer>
+      <CharacterContainer>
+        <Card.Body>
           { result }
-        </CharacterContainer>
-      </Card>
+        </Card.Body>
+      </CharacterContainer>
   )
 }
-const CharacterContainer = styled(Card.Body)`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
-  gap: 2rem;
+const CharacterContainer = styled(Card)`
+  .card-body {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+    gap: 2rem; 
+  }
 `

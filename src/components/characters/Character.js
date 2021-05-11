@@ -71,7 +71,8 @@ const CharacterCard = styled(Card)`
     box-shadow: 0 0 8px 1px rgba(0,0,0,0.3);
     
     & > .card {
-      display: block;
+      display: flex;
+      align-items: center;
       position: absolute;
       top: 0;
       left: 0;
@@ -91,13 +92,13 @@ const Occupations = styled.div`
   margin: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-  grid-auto-rows: minmax(3rem, auto);
+  grid-auto-rows: minmax(1rem, auto);
   gap: .5rem;
 
   .card {
     padding: .5rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     text-align: center;
     font-weight: bold;
@@ -105,11 +106,14 @@ const Occupations = styled.div`
   }
 `
 const Seasons = styled.div`
-  margin: 1rem;
   display: grid;
-  grid-template-columns: repeat(3, minmax(2rem, 1fr));
+  grid-template-columns: repeat(2, minmax(2rem, 1fr));
   gap: .5rem;
+
   .badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-shadow: 0 0 8px 1px rgba(0,0,0,0.1);
   }
 `
