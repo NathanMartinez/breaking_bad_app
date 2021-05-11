@@ -1,8 +1,6 @@
 import { Badge, Card } from 'react-bootstrap'
 import styled from 'styled-components'
 
-let statusColor = 'lime'
-
 export default function Character({ character }) {
   const { 
     name, 
@@ -26,12 +24,13 @@ export default function Character({ character }) {
       <Seasons>{ list }</Seasons>
     )
   }
+  const statusColor = status === 'Alive' ? 'success' : status === 'Deceased' ? 'danger' : 'warning'
   
   return (
   <CharacterCard>
     <Card.Img variant="top" src={ img } fluid/>
       <Card.Header>
-        <Card.Title>{ name } <span spancolor='red'></span></Card.Title>
+        <Card.Title>{ name } <Badge variant={ statusColor }>{ status }</Badge></Card.Title>
         <Card.Text>{ nickname }</Card.Text>
         <small>- { portrayed }</small>
       </Card.Header>
@@ -54,15 +53,6 @@ const CharacterCard = styled(Card)`
   .card-img-top, & > .card {
     height: 25rem;
   }
-
-  & > .card-header {
-    span {
-      content: ${props => props};
-      height: 1rem;
-      width: 1rem;
-      background: red;
-      border-radius: 50%;
-    }
 
     .card-title {
       display: flex;
@@ -89,6 +79,8 @@ const CharacterCard = styled(Card)`
       z-index: 1;
       background: inherit;
       border-radius: inherit;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
       &, div {
         opacity: 0.9;
       }
