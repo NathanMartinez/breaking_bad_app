@@ -15,7 +15,7 @@ export default function Characters() {
   if (status === 'error') return <h1>Error :(</h1>
   if (status === 'loading') return <Loading />
 
-  const result = data.map((character, i) => <Character key={i} character={character}/>)
+  const result = data.map((character, i) => <Character key={ i } character={ character }/>)
 
   return (
       <Card>

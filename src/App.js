@@ -1,31 +1,60 @@
-// React
-import { useContext } from 'react'
-
 // React Bootstrap
-import { Card } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
+
+// React Router
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 // Components
-import NavTabs from './components/navigation/NavTabs'
+import NavigationBar from './components/navigation/NavigationBar'
 import Characters from './components/characters/Characters'
 import Episodes from './components/episodes/Episodes'
-
-// Context
-import { FormContext } from './providers/FormContextProvider'
 import Quotes from './components/quotes/Quotes'
 import Deaths from './components/deaths/Deaths'
 
-function App() {
-  const { globalState: { page } } = useContext(FormContext)
+// Styled Components
+import styled from 'styled-components'
+
+export default function App() {
+  function scrollToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
 
   return (
-      <> 
-            <NavTabs />
-          { page === 'episodes' && <Episodes /> }
-          { page === 'characters' && <Characters /> }
-          { page === 'quotes' && <Quotes /> }
-          { page === 'deaths' && <Deaths /> }
-      </>
+    <Router>
+      <NavigationBar />
+        <AppSection>
+          <Switch>
+            <Route path='/' exact>
+              <Characters />
+            </Route>
+            <Route path='/episodes'>
+              <Episodes />
+            </Route>
+            <Route path='/quotes'>
+              <Quotes />
+            </Route>
+            <Route path='/deaths'>
+              <Deaths />
+            </Route>
+          </Switch>
+        </AppSection>
+      <BackToTop onClick={ scrollToTop }>Back to top</BackToTop>
+    </Router>
   );
 }
 
-export default App;
+const BackToTop = styled(Button)`
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 20;
+  opacity: 0.9;
+`
+const AppSection = styled.section`
+  margin-top: 3rem;
+`

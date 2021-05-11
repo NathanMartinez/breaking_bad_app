@@ -1,25 +1,19 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // React Context
-import FormContextProvider from './providers/FormContextProvider'
+import ThemeContextProvider from './providers/ThemeProvider'
 
 // React Query
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
-
+import { QueryClient, QueryClientProvider } from "react-query"
 const queryClient = new QueryClient();
 
-require('dotenv').config();
-
 ReactDOM.render(
-  <QueryClientProvider client={queryClient}>
-    <FormContextProvider>
+  <QueryClientProvider client={ queryClient }>
+    <ThemeContextProvider>
       <App />
-      </FormContextProvider>
-    <ReactQueryDevtools initialIsOpen />
+    </ThemeContextProvider>
   </QueryClientProvider>,
   document.getElementById('root')
 );

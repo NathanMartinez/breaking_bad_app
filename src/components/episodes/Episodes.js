@@ -1,7 +1,6 @@
-import React, { useContext } from 'react'
 import { Accordion } from 'react-bootstrap'
 import { useQuery } from 'react-query'
-import { FormContext } from '../../providers/FormContextProvider'
+
 import Episode from './Episode'
 import Loading from '../utilities/Loading'
 
@@ -11,14 +10,12 @@ const getEpisodes = async () => {
 }
 
 export default function Episodes() {
-  const { globalState: { limit } } = useContext(FormContext)
-  
-  const { data, status } = useQuery(['episodes', limit], getEpisodes) 
+  const { data, status } = useQuery('episodes', getEpisodes) 
   
   if (status === 'error') return <h1>Error :(</h1>
   if (status === 'loading') return <Loading />
 
-  const result = data.map((_episode, i) => <Episode key={ i } _episode={_episode}/>)
+  const result = data.map((episode, i) => <Episode key={ i } _episode={ episode }/>)
 
   return (
       <Accordion>

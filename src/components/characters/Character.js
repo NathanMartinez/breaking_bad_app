@@ -1,6 +1,8 @@
 import { Badge, Card } from 'react-bootstrap'
 import styled from 'styled-components'
 
+let statusColor = 'lime'
+
 export default function Character({ character }) {
   const { 
     name, 
@@ -13,7 +15,7 @@ export default function Character({ character }) {
   } = character
 
   const OccupationList = () => {
-    let list = occupation.map((job, i) => (<Occupation bg='success' text='light' key={ i }>{ job }</Occupation>))
+    let list = occupation.map((job, i) => (<Card bg='success' text='light' key={ i }>{ job }</Card>))
     return (
       <Occupations>{ list }</Occupations>
     )
@@ -27,18 +29,20 @@ export default function Character({ character }) {
   
   return (
   <CharacterCard>
-    <CharacterImg variant="top" src={ img } fluid/>
+    <Card.Img variant="top" src={ img } fluid/>
       <Card.Header>
-      <Card.Title>{ name }</Card.Title>
-      <Card.Text>{ nickname }</Card.Text>
-      <small>- { portrayed }</small>
+        <Card.Title>{ name } <span spancolor='red'></span></Card.Title>
+        <Card.Text>{ nickname }</Card.Text>
+        <small>- { portrayed }</small>
       </Card.Header>
-      <CardBody className='cardbody'>
-      <b>Occupations</b>
-      <OccupationList />
-      <b>Breaking Bad</b>
-      <SeasonsList />
-    </CardBody>
+      <Card>
+      <Card.Body>
+        <b>Occupations</b>
+        <OccupationList />
+        <b>Breaking Bad</b>
+        <SeasonsList />
+    </Card.Body>
+      </Card>
   </CharacterCard>
   )
 }
@@ -46,17 +50,44 @@ export default function Character({ character }) {
 const CharacterCard = styled(Card)`
   position: relative;
   box-shadow: 0 0 8px 1px rgba(0,0,0,0.1);
+
+  .card-img-top, & > .card {
+    height: 25rem;
+  }
+
+  & > .card-header {
+    span {
+      content: ${props => props};
+      height: 1rem;
+      width: 1rem;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .card-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  & > .card {
+    display: none;
+    text-align: center;
+  }
+
   &:hover {
     cursor: pointer;
     box-shadow: 0 0 8px 1px rgba(0,0,0,0.3);
-    .cardbody {
+    
+    & > .card {
       display: block;
       position: absolute;
-      background: rgb(247,247,247);
       top: 0;
       left: 0;
       right: 0;
       z-index: 1;
+      background: inherit;
       border-radius: inherit;
       &, div {
         opacity: 0.9;
@@ -64,28 +95,22 @@ const CharacterCard = styled(Card)`
     }
   }
 `
-const CharacterImg = styled(Card.Img)`
-  height: 25rem;
-`
-const CardBody = styled(Card.Body)`
-  display: none;
-  text-align: center;
-`
 const Occupations = styled.div`
   margin: 1rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
   grid-auto-rows: minmax(3rem, auto);
   gap: .5rem;
-`
-const Occupation = styled(Card)`
-  padding: .5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-weight: bold;
-  box-shadow: 0 0 8px 1px rgba(0,0,0,0.1);
+
+  .card {
+    padding: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 0 8px 1px rgba(0,0,0,0.1);
+  }
 `
 const Seasons = styled.div`
   margin: 1rem;

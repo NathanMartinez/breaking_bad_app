@@ -15,19 +15,21 @@ export default function Deaths() {
   if (status === 'error') return <h1>Error :(</h1>
   if (status === 'loading') return <Loading />
 
-  const result = data.map((death, i) => <Death key={i} _death={death}/>)
+  const result = data.map((death, i) => <Death key={ i } _death={ death }/>)
 
   return (
-      <Card>
-        <Deathsection>
+      <DeathsArea>
+        <Card.Body>
           { result }
-        </Deathsection>
-      </Card>
+        </Card.Body>
+      </DeathsArea>
   )
 }
-const Deathsection = styled(Card.Body)`
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-grid-auto-rows: minmax(10rem, auto);
-gap: 1.5rem;
+const DeathsArea = styled(Card)`
+  & > .card-body {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-auto-rows: minmax(10rem, auto);
+    gap: 1.5rem;
+  }
 `

@@ -1,7 +1,9 @@
 import { Card } from 'react-bootstrap'
 import { useQuery } from 'react-query'
-import Loading from '../utilities/Loading'
+
 import Quote from './Quote'
+import Loading from '../utilities/Loading'
+
 import styled from 'styled-components'
 
 const getQuotes = async () => {
@@ -15,19 +17,21 @@ export default function Quotes() {
   if (status === 'error') return <h1>Error :(</h1>
   if (status === 'loading') return <Loading />
 
-  const result = data.map((_quote, i) => <Quote key={i} _quote={_quote}/>)
+  const result = data.map((quote, i) => <Quote key={ i } _quote={ quote }/>)
 
   return (
-      <Card>
-        <QuoteSection>
+      <QuoteSection>
+        <Card.Body>
           { result }
-        </QuoteSection>
-      </Card>
+        </Card.Body>
+      </QuoteSection>
   )
 }
-const QuoteSection = styled(Card.Body)`
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-grid-auto-rows: minmax(3rem, auto);
-gap: 1.5rem;
+const QuoteSection = styled(Card)`
+  .card-body {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-auto-rows: minmax(3rem, auto);
+    gap: 1.5rem;
+  }
 `
