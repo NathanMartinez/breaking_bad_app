@@ -5,7 +5,6 @@ export default function SearchForm() {
 
   return (
     <Card.Body>
-      <Card.Title>Breaking Bad Search</Card.Title>
       <Form>
         <NameInput />
         <Button>Search</Button>

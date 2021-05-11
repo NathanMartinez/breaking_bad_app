@@ -6,7 +6,6 @@ import { Card } from 'react-bootstrap'
 
 // Components
 import NavTabs from './components/navigation/NavTabs'
-import SearchForm from './components/form-components/SearchForm'
 import Characters from './components/characters/Characters'
 import Episodes from './components/episodes/Episodes'
 
@@ -20,10 +19,7 @@ function App() {
 
   return (
       <> 
-          <Card>
             <NavTabs />
-            <SearchForm />
-          </Card>
           { page === 'episodes' && <Episodes /> }
           { page === 'characters' && <Characters /> }
           { page === 'quotes' && <Quotes /> }
