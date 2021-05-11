@@ -15,7 +15,7 @@ export default function Characters() {
   if (status === 'error') return <h1>Error :(</h1>
   if (status === 'loading') return <Loading />
 
-  const result = data.map((character, i) => <Character key={i} character={character}/>)
+  const result = data.map((character, i) => <Character key={ i } character={ character }/>)
 
   return (
       <Card>
@@ -27,6 +27,6 @@ export default function Characters() {
 }
 const CharacterContainer = styled(Card.Body)`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
   gap: 2rem;
 `

@@ -1,15 +1,17 @@
 import { Spinner } from 'react-bootstrap'
+import styled from 'styled-components'
 
 export default function Loading() {
-  const style = {
-    height: '200px',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
   return (
-    <div style={style}>
+    <LoadingContainer>
       <Spinner animation="border" variant="primary" />
-    </div>
+    </LoadingContainer>
   )
 }
+
+const LoadingContainer = styled.div`
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
