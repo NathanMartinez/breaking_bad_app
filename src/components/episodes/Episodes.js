@@ -1,5 +1,6 @@
 import { Card } from 'react-bootstrap'
 import { useQuery } from 'react-query'
+import { useThemeContext } from '../../context/ThemeContext'
 
 import Episode from './Episode'
 import Loading from '../utilities/Loading'
@@ -12,20 +13,23 @@ const getEpisodes = async () => {
 }
 
 export default function Episodes() {
-  const { data, status } = useQuery('episodes', getEpisodes) 
+    const { darkTheme, useTheme } = useThemeContext()
+    const { bg, text } = useTheme()
+
+    const { data, status } = useQuery('episodes', getEpisodes) 
   
-  if (status === 'error') return <h1>Error :(</h1>
-  if (status === 'loading') return <Loading />
+    if (status === 'error') return <h1>Error :(</h1>
+    if (status === 'loading') return <Loading />
 
-  const result = data.map((episode, i) => <Episode key={ i } _episode={ episode }/>)
+    const result = data.map((episode, i) => <Episode key={ i } _episode={ episode }/>)
 
-  return (
-    <EpisodeContainer>
-        <Card.Body>
-            { result }
-        </Card.Body>
-    </EpisodeContainer>
-  )
+    return (
+        <EpisodeContainer bg={ darkTheme ? "secondary" : "secondary" }>
+            <Card.Body>
+                { result }
+            </Card.Body>
+        </EpisodeContainer>
+    )
 }
 const EpisodeContainer = styled(Card)`
 & > .card-body {

@@ -1,7 +1,12 @@
 import { Card } from 'react-bootstrap'
+
 import { useQuery } from 'react-query'
+
+import { useThemeContext } from '../../context/ThemeContext'
+
 import Character from './Character'
 import Loading from '../utilities/Loading'
+
 import styled from 'styled-components'
 
 const getCharacters = async () => {
@@ -10,6 +15,9 @@ const getCharacters = async () => {
 }
 
 export default function Characters() {
+  const { useTheme } = useThemeContext()
+  const { bg, text } = useTheme()
+
   const { data, status } = useQuery('characters', getCharacters) 
   
   if (status === 'error') return <h1>Error :(</h1>
@@ -18,7 +26,7 @@ export default function Characters() {
   const result = data.map((character, i) => <Character key={ i } character={ character }/>)
 
   return (
-      <CharacterContainer>
+      <CharacterContainer bg={ bg } text={ text }>
         <Card.Body>
           { result }
         </Card.Body>
@@ -30,5 +38,6 @@ const CharacterContainer = styled(Card)`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
     gap: 2rem; 
+    padding: 2rem 1rem;
   }
 `

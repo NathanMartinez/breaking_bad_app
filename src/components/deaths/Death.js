@@ -21,19 +21,19 @@ export default function Death({_death}) {
 const DeathCard = styled(Card)`
   box-shadow: 0 0 8px 1px rgba(0,0,0,0.1);
 
-  blockquote {
-    font-style: italic;
-  }
+    blockquote {
+      font-style: italic;
+    }
 
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .card-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-  }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
 `

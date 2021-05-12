@@ -3,10 +3,11 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // React Context
-import ThemeContextProvider from './providers/ThemeProvider'
+import ThemeContextProvider from './context/ThemeContext'
 
 // React Query
 import { QueryClient, QueryClientProvider } from "react-query"
+
 const queryClient = new QueryClient();
 
 ReactDOM.render(

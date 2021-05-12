@@ -1,5 +1,5 @@
 // React Bootstrap
-import { Button } from 'react-bootstrap'
+import { Button, Card } from 'react-bootstrap'
 
 // React Router
 import {
@@ -18,33 +18,39 @@ import Deaths from './components/deaths/Deaths'
 // Styled Components
 import styled from 'styled-components'
 
+// Context
+import { useThemeContext } from './context/ThemeContext'
+
 export default function App() {
+  const { useTheme } = useThemeContext()
+  const { bg, text } = useTheme()
+
   function scrollToTop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
 
   return (
-    <Router>
-      <NavigationBar />
-        <AppSection>
-          <Switch>
-            <Route path='/' exact>
-              <Characters />
-            </Route>
-            <Route path='/episodes'>
-              <Episodes />
-            </Route>
-            <Route path='/quotes'>
-              <Quotes />
-            </Route>
-            <Route path='/deaths'>
-              <Deaths />
-            </Route>
-          </Switch>
-        </AppSection>
-      <BackToTop onClick={ scrollToTop }>Back to top</BackToTop>
-    </Router>
+    <AppSection bg={ bg } text={ text }>
+      <Router>
+        <NavigationBar />
+            <Switch>
+              <Route path='/' exact>
+                <Characters />
+              </Route>
+              <Route path='/episodes'>
+                <Episodes />
+              </Route>
+              <Route path='/quotes'>
+                <Quotes />
+              </Route>
+              <Route path='/deaths'>
+                <Deaths />
+              </Route>
+            </Switch>
+        <BackToTop onClick={ scrollToTop }>Back to top</BackToTop>
+      </Router>
+    </AppSection>
   );
 }
 
@@ -55,6 +61,7 @@ const BackToTop = styled(Button)`
   z-index: 20;
   opacity: 0.9;
 `
-const AppSection = styled.section`
+const AppSection = styled(Card)`
   margin-top: 3rem;
+  background: red;
 `
