@@ -21,10 +21,10 @@ export default function Quotes() {
   if (status === 'error') return <h1>Error :(</h1>
   if (status === 'loading') return <Loading />
 
-  const result = data.map((quote, i) => <Quote key={ i } quoteData={ quote }/>)
+  const result = data.map((quote, i) => <Quote key={ i } _quote={ quote }/>)
 
   return (
-      <QuoteSection bg={ bg } text={ text }>
+      <QuoteSection>
         <Card.Body>
           { result }
         </Card.Body>

@@ -2,16 +2,16 @@ import { Card } from 'react-bootstrap'
 import { useThemeContext } from '../../context/ThemeContext'
 import styled from 'styled-components'
 
-export default function quote() {
+export default function quote({ _quote }) {
   // const { useTheme } = useThemeContext()
 
-  // const { quote, author } = _quote
+  const { quote, author } = _quote
 
   return (
     <QuoteCard>
       <Card.Body>
-        {/* <blockquote>"{ quote }"</blockquote>
-        <small>{ author }</small> */}
+        <blockquote>"{ quote }"</blockquote>
+        <small>{ author }</small>
       </Card.Body> 
     </QuoteCard>
   )
